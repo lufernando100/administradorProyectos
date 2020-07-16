@@ -8,6 +8,7 @@ import {
   AGREGAR_PROYECTO,
   VALIDAR_FORMULARIO,
   PROYECTO_ACTUAL,
+  ELIMINAR_PROYECTO,
 } from "../../types";
 
 const ProyectoState = (props) => {
@@ -57,13 +58,22 @@ const ProyectoState = (props) => {
       type: VALIDAR_FORMULARIO,
     });
   };
-   // Selecciona el proyecto que el usuario le da click
-const proyectoActual = proyectoId => {
-  dispatch({
-    type: PROYECTO_ACTUAL,
-    payload: proyectoId
-  })
-}
+  // Selecciona el proyecto que el usuario le da click
+  const proyectoActual = (proyectoId) => {
+    dispatch({
+      type: PROYECTO_ACTUAL,
+      payload: proyectoId,
+    });
+  };
+
+  //Elimina un proyecto
+
+  const eliminarProyecto = (proyectoId) => {
+    dispatch({
+      type: ELIMINAR_PROYECTO,
+      payload: proyectoId,
+    });
+  };
 
   return (
     <proyectoContext.Provider
@@ -76,7 +86,8 @@ const proyectoActual = proyectoId => {
         obtenerProyectos,
         agregarProyecto,
         mostrarError,
-        proyectoActual
+        proyectoActual,
+        eliminarProyecto
       }}
     >
       {props.children}
