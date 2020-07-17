@@ -10,12 +10,12 @@ const Tarea = ({ tarea }) => {
   const proyectosContext = useContext(proyectoContext);
   const { proyecto } = proyectosContext;
 
-  const {proyectoActual}= proyecto
-  tarea.proyectoId = proyectoActual.id;
+  const [proyectoActual]= proyecto
   // funcion para eliminar tarea
   const tareaEliminar = (id) => {
     eliminarTarea(id);
-    obtenerTareas(proyectoActual.id)
+    obtenerTareas(proyectoActual.id);
+   
   };
 
   return (
